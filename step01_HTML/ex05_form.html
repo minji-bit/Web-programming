@@ -21,13 +21,15 @@
     비번 : <input type="password" placeholder="비번입력하세요" name="pwd"/><br/>
     아이디1 :<input type="text" name="id" value="jeon" readonly/><br/><!--서버에 전송됨-->
     아이디2 :<input type="text" name="id2" value="kim" disabled/><br/><!--서버에 전송안됨-->
-<!-- radio 는 name이 같은 항목끼리 그룹핑되어 단일선택이 된다!! -->
+
+    <!-- radio 는 name이 같은 항목끼리 그룹핑되어 단일선택이 된다!! -->
     <fieldset>
         <legend>성별</legend>
         <input type="radio" name="gender" value="man">남자
         <input type="radio" name="gender" value="woman">여자
     </fieldset>
-<!-- checkbox는 name이 같아도 달라도 상관없다. 멀티선택이 가능하다. 보통 name을 동일하게 많이 작성한다.
+
+    <!-- checkbox는 name이 같아도 달라도 상관없다. 멀티선택이 가능하다. 보통 name을 동일하게 많이 작성한다.
     (전송하거나 javascript접근할 때 배열로 처리가 가능)-->
     <fieldset>
         <legend>취미</legend>
