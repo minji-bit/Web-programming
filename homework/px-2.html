@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #signup input:checked+label{
+            color: red;
+            font-weight: bold;
+        }
+        ul{
+            list-style: none;
+        }
+        /* #signup input[type=text], input[type=tel]{
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding:5px;
+            width: 200px;
+        } */
+        #signup input:not([type=radio]){
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding:5px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <fieldset id="signup">
+    <fieldset>
+        <legend>개인정보</legend>
+    <ul>
+        <li>
+            <label for="name">이름</label>
+            <input type="text" name="name" id="name">
+        </li><br>
+        <li>
+            <label for="tel">연락처 </label>
+            <input type="tel" name="tel" id="tel">
+        </li>
+    </ul>
+    
+
+</fieldset>
+<br>
+<fieldset>
+    <legend>객실형태</legend>
+<ul>
+    <li>
+        <input type="radio" name="room" id="basic">
+        <label for="basic">기본형(최대 2인)</label>
+    </li><br>
+    <li>
+        <input type="radio" name="room" id="family">
+        <label for="family">가족형(최대 8인) </label>
+    </li>
+</ul>
+
+
+</fieldset>
+</fieldset>
+</body>
+</html>
