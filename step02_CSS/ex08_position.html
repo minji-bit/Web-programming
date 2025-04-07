@@ -7,15 +7,50 @@
     <style>
         .main{
             background-color: antiquewhite;
-            width: 500px;height: 400px;}
+            width: 500px;height: 400px;
+            position: relative;}
         div div{width: 80px;height: 80px;text-align: center;align-content:center ;}
-        .a{background-color: aqua;}
-        .b{background-color: coral;
-            top:0px;left: 0px;
-            /*position: relative;*//*원래 놓여야 할 위치에서 부터 이동한다.*/
-            position:absolute; /*자신의 부모 위치 기준으로부터 이동한다.*/
+        .a{background-color: aqua;
+            position:relative;
+            left:10px; top:20px;
+            z-index: 1;
         }
-        .c{background-color: aquamarine;}
+        /*
+         position:relative; 설정되면
+         다음에 놓이는 요소에의 위치에 영향을 준다.
+         다음요소는 position:relative;설정된 요소가 원래 놓여야 할 위치를
+         계산한 후 그 뒤에 놓이게 된다.
+         
+         position: fixed; position:absolute; 는
+         다음에 놓이는 요소의 위치에 영향을 주지 않는다.
+         다음 요소는 fixed,absolute가 설정된 요소를 전혀 알 수 없다.
+
+         z-index는 position이 설정된 요소들이 겹쳐 있을 때
+         요소들의 레이어순서를 정한다.
+         기본은 z-index:0이고 숫자가 클수록 맨위로 올라온다.
+        */
+        .b{background-color: coral;
+            left: 30px; top: 30px;
+            /*position:relative; /*원래 놓여야할 위치에서부터 이동한다.*/
+            /*position : absolute;/*가장 가까운 부모중에 position이 static아닌 부모를 기준으로 이동*/
+            position:fixed;/*브라우저 화면을 기준으로 이동*/
+            /*position:sticky;/*relative와 fixed의 중간성격을 가진 속성*/
+            z-index: 2;
+        
+        }
+        .c{background-color: aquamarine;
+       /* position:fixed;
+        top:60px;*/
+        z-index: 3;
+    }
+    .todayView{
+        width: 150px; height: 200px;
+        border:inset 3px skyblue;
+        padding: 5px;
+        box-sizing: border-box;
+        position: fixed;
+        top:10px; right: 10px;
+    }
     </style>
 </head>
 <body>
@@ -23,6 +58,10 @@
         <div class="a">1</div>
         <div class="b">2</div>
         <div class="c">3</div>
+        <h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3><h3>스크롤</h3>
+    </div>
+    <div class="todayView">
+        <h4>오늘 본 상품</h4>
     </div>
 </body>
 </html>

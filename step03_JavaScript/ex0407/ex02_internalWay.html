@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //여기는 javaScript영역입니다.
+        /*여러줄 주석!*/
+        //브라우저에 출력
+        document.write("<h1 style='color:red'>출력되니?</h1>");
+    //콘솔 출력
+        console.log("난 어디에 나와?");
+
+        //마우스를 오버했을 때 기능
+        function mouseOver(th){//th변수는 this가 전달된다.
+            th.style.backgroundColor="red";
+            th.style.color="white";
+        }
+        //마우스를 아웃했을 때 기능
+        function mouseOut(th){
+            th.style.backgroundColor="white";
+            th.style.color="black";
+        }
+
+    </script>
+</head>
+<body>
+    <!--
+    
+    
+    -->
+    <h1 onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">JavaScript 시작하기</h1>
+    <h1 onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">마우스를 올려봐</h1>
+    <script>
+        document.write("<h3>안녕하세요</h3>")
+    </script>
+
+</body>
+</html>
