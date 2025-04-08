@@ -5,32 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>구구단</title>
     <style>
-        body{
-            text-align: center;
-        }
+        
         table{
+            text-align: center;
             border: 3px red solid;
+            border-collapse: collapse;
+            width: 800px; height: 400px;
             
         }
+        tr:not(#first) td{
+            font-size: medium;
+            font-weight: bold;
+            background-color: bisque;
+        }
+        #first td{
+            font-weight: bold;
+            background-color: coral;
+            color: white;
+            font-size: larger;
+        }
+        td{
+            border: 1px black solid;      
+        }
+        
         
 
     </style>
 </head>
 <body>
     <script>
-        document.write("<table border=1 width=300>");
-        document.write("<caption>구구단</caption>");
+        document.write("<table>");
+        document.write("<caption><h3>구구단</h3></caption>");
         
-        document.write("<tr>");
+        document.write("<tr id=first>");
         for(let k=2;k<=9;k++){
-                document.write("<td>"+k+"단"+"</td>")
+                document.write(`<td>${k}단</td>`)
             }
         document.write("</tr>");
         
     for(let i=1;i<=9;i++){
         document.write("<tr>"); 
         for(let j=2;j<=9;j++){
-            document.write("<td>"+j+"*"+i+"="+j*i+"</td>");
+            document.write(`<td>${j} * ${i} = ${j*i} </td>`);
         }
         document.write("</tr>");
     }

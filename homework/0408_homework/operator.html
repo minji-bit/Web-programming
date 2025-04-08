@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산하기</title>
+    <style>
+        div{
+            border: 1px black solid;
+            width: 200px; height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h3>계산해보자</h3>
+    <button id="button">계산</button>
+    <div id="resultDiv"></div>
+    <script>
+        
+        function checkNum(text){
+            let num;
+            while(true){
+                num = prompt(text);
+                if(parseInt(num)) return parseInt(num);
+                else {
+                 let reply = confirm("숫자가 아닙니다. 재입력하시겠습니까?");
+                 if(!reply) return null;
+                }
+            }
+        }
+        function checkOp(text){
+            let op;
+            while(true){
+                op = prompt(text);
+                if(op==="+" ||op==="-"||op==="*"||op==="/") return op;
+                else{
+                    let reply = confirm("연산자가 아닙니다. 재입력하시겠습니까?");
+                    if(!reply) return null;
+                }
+            }
+        }
+        
+        document.getElementById("button").addEventListener("click",()=>{
+            let num1 = checkNum("첫번째 값을 입력하세요");  
+            if(num1 === null) return;
+            let num2 = checkNum("두번째 값을 입력하세요");
+            if(num1 === null) return;
+            let op=checkOp("+,-,*,/ 중에 입력해주세요");
+            if(op === null) return;
+            let result;
+            switch(op){
+                case "+":
+                    result = num1+num2;
+                    break;
+                case "-":
+                    result = num1-num2;
+                    break;
+                case "*":
+                    result = num1*num2;
+                    break;
+                case "/":
+                    result = num1/num2;
+                    break;
+                
+            }
+            document.getElementById("resultDiv").innerText = num1+op+num2+"="+result;
+        });
+
+    </script>
+</body>
+</html>

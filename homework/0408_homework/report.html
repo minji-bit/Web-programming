@@ -3,11 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>성적표</title>
+    <style>
+        table{
+            border: 4px red double;
+            border-collapse: collapse;
+            border-style: double;
+            text-align: center;
+            width: 800px; height: 200px;
+
+        }
+        td{
+            border: 1px black solid;
+            
+        }
+        #first td{
+            font-weight: bold;
+            font-size: larger;
+        }
+
+    </style>
 </head>
 <body>
-    <table border="2px solid black" width="400px">
-        <tr>
+    <table>
+        <caption><h3>성적표</h3></caption>
+        <tr id="first">
             <td>이름</td>
             <td>국어</td>
             <td>영어</td>
@@ -32,10 +52,32 @@
         let korean = prompt("국어점수는?");
         let english = prompt("영어점수는?");
         let math = prompt("수학점수는?");
-        
-        
-
-        
+        let total = parseInt(korean) + parseInt(english) + parseInt(math);
+        let average = total/3;
+        let grade ;
+        switch(average/10){
+            case 10,9:
+                grade = "수";
+                break;
+            case 8:
+                grade = "우";
+                break;
+            case 7:
+                grade ="미";
+                break;
+            case 6:
+                grade ="양";
+                break;
+            default:
+                grade ="가";
+        }
+        document.getElementById("name").innerText=name;
+        document.getElementById("korean").innerText=korean;
+        document.getElementById("english").innerText=english;
+        document.getElementById("math").innerText=math;
+        document.getElementById("total").innerText=total;
+        document.getElementById("average").innerText=average;
+        document.getElementById("grade").innerText=grade;
     </script>
 </body>
 </html>
