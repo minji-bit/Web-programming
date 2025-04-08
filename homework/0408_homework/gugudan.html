@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        table{
+            border: 3px red solid;
+            
+        }
+        
+
+    </style>
+</head>
+<body>
+    <script>
+        document.write("<table border=1 width=300>");
+        document.write("<caption>구구단</caption>");
+        
+        document.write("<tr>");
+        for(let k=2;k<=9;k++){
+                document.write("<td>"+k+"단"+"</td>")
+            }
+        document.write("</tr>");
+        
+    for(let i=1;i<=9;i++){
+        document.write("<tr>"); 
+        for(let j=2;j<=9;j++){
+            document.write("<td>"+j+"*"+i+"="+j*i+"</td>");
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>")
+</script>
+
+
+</body>
+</html>

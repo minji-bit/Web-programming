@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #divResult{
+            width: 300px; height: 200px;
+            border : 1px red solid;
+            overflow: auto;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>이벤트등록 + Dom 요소 접근</h1>
+    <form>
+        이름 : <input type="text" name="name" id="name"><br>
+        결과 : <input type="text" id="result"><br>
+        <button type="button">클릭</button>
+    </form>
+    <hr>
+    <div id="divResult">
+
+
+    </div>
+    <script>
+        //이벤트 등록
+        document.querySelector("[type=button]").addEventListener("click",
+        ()=>{
+            //이름 text의 값을 가져온다.
+            let nameEle = document.getElementById("name");//<input type="text"
+            //alert(nameEle.value);
+            
+            //가져온 값이 없으면 메시지를 출력하고 커서를 놓는다
+            if(nameEle.value===""){
+                alert("이름을 입력해주세요");
+                nameEle.focus();//커서놓기
+                return; //함수를 빠져나가라
+            }
+            //만약 있으면 결과 text박스와 div영역에 이름을 넣는다.
+            document.getElementById("result").value = nameEle.value;
+
+            /*div영역에 내용 추가
+               form요소가 아닌 element에 content를 추가할 때는 
+                ~.innerText = 값 또는 ~.innerHTML = 값
+            */
+             //div 찾기
+             let divEle = document.getElementById("divResult");
+             //divEle.innerText = "<h4>"+nameEle.value+"</h4>";
+            divEle.innerHTML += "<h4>"+nameEle.value+"</h4>";
+
+            //이름 text 박스의 데이터를 초기화 한다.
+            nameEle.value = "";
+            nameEle.focus();
+            // 이름에 커서를 놓는다.
+
+        });
+    </script>
+</body>
+</html>
