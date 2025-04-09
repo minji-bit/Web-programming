@@ -115,5 +115,25 @@
     
 
     </div>
+    <script>
+      let regName = document.getElementById("name");
+      let email = document.getElementById("email");
+      let phone = document.getElementById("phone");
+      let password = document.getElementById("password");
+      let password2 = document.getElementById("password2");
+      document.querySelector("button").addEventListener("click",()=>{
+          if(!regName.value || !email.value || !phone.value || !password.value || !password2.value){
+            alert("값을 입력해주세요");
+            return;
+          }
+          if(email.value.indexOf("@")===-1) {
+            alert("이메일 형식이 아닙니다.");
+            return;
+          }
+          if(password.value!==password2.value) {
+            alert("비밀번호가 일치하지 않습니다.");
+          }
+      })
+    </script>
  </body>
 </html>

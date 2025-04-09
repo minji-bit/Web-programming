@@ -49,27 +49,27 @@
     <div id="main">
     
      <!-- 총 3개의 서브영역 -->
-      <div class="main-item">
+      <div class="main-item" data-main-item-id="10">
         <img src="https://picsum.photos/200" alt="">
          <h2>main-item 1</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <button>button 1</button>
+        <button class="main-item-btn">button 1</button>
       </div>
       
-      <div class="main-item">
+      <div class="main-item" data-main-item-id="20">
         <img src="https://picsum.photos/200" alt="">
          <h2>main-item 2</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <button>button 2</button>
+        <button class="main-item-btn">button 2</button>
       </div>
       
       
       
-      <div class="main-item">
+      <div class="main-item" data-main-item-id="30">
         <img src="https://picsum.photos/200" alt="">
         <h2>main-item 3</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <button>button 3</button>
+        <button class="main-item-btn">button 3</button>
       </div>
      
       
@@ -86,18 +86,32 @@
 
 
   <script>
+    ///////////////////배너//////////////////
     let bannerList = ["국민의 은행이 되겠습니다.", "5060 웰컴패키지, 최대 7만원 혜택을 드립니다.", "타행이체, 자동이체 수수료 면제", "저녁 6시까지 영업합니다."]; 
-    let i;
-    let bannerChange= ()=>{
-      for (i = 0; i<100 ; i++) {          
-      setTimeout(()=>{
-          document.getElementById("banner").innerHTML=bannerList[i%4];      
-        },5000);
-      }
+    let i=0;
+    setInterval(()=>{
+        bannerFtn();
+        i++;
+      },1000);
+    let bannerFtn=()=>{
+      document.getElementById("banner").innerHTML=bannerList[i%bannerList.length];    
     }
+    ///////////////////버튼////////////////////
+    let buttonList = document.querySelectorAll("[class=main-item-btn]");
+    let parent;
     
-   bannerChange();
-
+    buttonList[0].addEventListener("click",()=>{
+      parent= buttonList[0].parentNode;
+      alert(`id=${parent.getAttribute("data-main-item-id")}`);});
+    
+      buttonList[1].addEventListener("click",()=>{
+      let parent= buttonList[1].parentNode;
+      alert(`id=${parent.getAttribute("data-main-item-id")}`);});
+    
+      buttonList[2].addEventListener("click",()=>{
+      let parent= buttonList[2].parentNode;
+      alert(`id=${parent.getAttribute("data-main-item-id")}`);});
+    
 
   </script>
   
