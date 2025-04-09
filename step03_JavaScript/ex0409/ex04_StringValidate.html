@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <body>
+ <form name="form">
+   ID : <input type="text" name="id"><span id="idSpan"></span><p>
+   age : <input type="text" name="age" ><span></span><p>
+   email : <input type="text" name="email"> <span></span><p>
+
+   <fieldset>
+     <legend>주민번호 </legend>
+	 <input type="text" size="6" name="jumin1"  > - <input type="text" size="7" name="jumin2"  ><span></span> <p>
+     
+	 성별 : 
+	  <input type="radio" name="gender" value="남자" >남자
+     <input type="radio" name="gender" value="여자">여자
+
+   </fieldset>
+
+
+ </form>
+
+ <script>
+    //이벤트 등록
+    document.querySelector("[name=id]").addEventListener("focus",()=>{
+        event.target.style.border="double 3px red";
+        //if(!event.target.value) 
+        document.getElementById("idSpan").innerHTML="";
+    });
+    document.querySelector("[name=id]").addEventListener("blur",()=>{
+      event.target.style.border="solid 1px gray";
+    //id는 영문만 가능!!
+    let idValue = event.target.value;
+    /*for (let i = 0; i < idValue.length; i++) {
+           let ch = idValue.charAt(i);
+           if(ch < 'a' || ch > 'z'){
+            console.log("영문아니다.");
+           }
+    }*/
+   //id는 영문 + 숫자 + $ @ ! 까지만 허용
+   let data="qwertyuiopasdfghjklzxcvbnm0123456789$@!";
+   for (let i = 0; i < idValue.length; i++) {
+           let ch = idValue.charAt(i);
+           if(data.toUpperCase().indexOf(ch.toUpperCase())==-1){
+            document.getElementById("idSpan").innerHTML="<strong style='color:red'>영문,숫자,$ @ !만 가능합니다.</strong>";
+            return;
+          }
+    }
+    });//id blur event
+    //////////////////////////////////////////////////
+    document.querySelector("[name=age]").addEventListener("blur",function(){numberCheck(event.target)});
+    
+
+    // 숫자유무 체크하는 함수
+    let numberCheck = (objEle)=>{
+       console.log(objEle);
+       if(isNaN(objEle.value)){
+        //숫자가 아님
+        objEle.nextSibling.innerHTML="<strong style='color:red'>숫자만 가능합니다.</strong>";
+        objEle.value="";
+        objEle.focus();
+        return true;
+       } else{
+        objEle.nextSibling.innerHTML="";
+        return false;
+       }
+    } //numberCheck 함수 end
+    //////////////////////////////////////////////////////////
+    document.querySelector("[name=jumin1]").addEventListener("keyup",function(){
+        let juminEle=event.target;
+       if(isNaN(juminEle.value)){
+        //숫자가 아님 -> 끝자리를 지운다.
+        juminEle.value = juminEle.value.substr(0,juminEle.value.length-1);
+        return;
+       }
+       //6자리를 체크해서 커서를 이동시킨다.
+       if(juminEle.value.length===6){
+          document.querySelector("[name=jumin2]").focus();
+       }
+    });//주민번호 앞자리 end
+    ////////////////////////////////////////////
+    document.querySelector("[name=jumin2]").addEventListener("blur",function(){
+        //숫자유무 체크 //성별체크
+        if(!numberCheck(event.target)){
+          let genderList = document.querySelectorAll("[name=gender]");  
+          let ch = event.target.value.charAt(0);
+          if(ch==="1"||ch==="3"){
+            console.log(genderList);         
+            genderList[0].checked=true;
+          }
+          else genderList[1].checked=true;
+        }
+        
+
+
+    });
+ </script>
+  
+ </body>
+</html>

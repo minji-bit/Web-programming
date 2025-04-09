@@ -21,7 +21,7 @@
             let num;
             while(true){
                 num = prompt(text);
-                if(parseInt(num)) return parseInt(num);
+                if(Number(num)) return parseInt(num);
                 else {
                  let reply = confirm("숫자가 아닙니다. 재입력하시겠습니까?");
                  if(!reply) return null;

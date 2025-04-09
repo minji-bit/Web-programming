@@ -54,8 +54,9 @@
         let math = prompt("수학점수는?");
         let total = parseInt(korean) + parseInt(english) + parseInt(math);
         let average = total/3;
+        average = parseInt(average*100)/100; // 소수점 둘째자리까지
         let grade ;
-        switch(average/10){
+        switch(parseInt(average)/10){
             case 10,9:
                 grade = "수";
                 break;

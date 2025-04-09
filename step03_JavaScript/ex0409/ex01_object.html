@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Object key와 value</h1>
+    <script>
+        const person={
+            name:"민지",
+            age:30,
+            addr:"경기",
+            print :function(){
+                return this.name+"님의 나이는 "+this.age+"세 입니다.";
+            }
+        };
+    console.log(person);
+    console.log(person.name);
+    console.log(person["name"]);
+    console.log(person.print());//함수호출
+
+    //Object의 key정보를 가져오기
+    let key = Object.keys(person);
+    console.log(key);
+
+    //Object의 value정보를 가져오기
+    let value= Object.values(person);
+    console.log(value);
+    console.log("-------------------------");
+    for (const k of key) {
+        // console.log(k);
+        console.log(k + "="+person[k]); 
+    }
+    </script>
+</body>
+</html>
