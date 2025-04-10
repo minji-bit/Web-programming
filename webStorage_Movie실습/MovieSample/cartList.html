@@ -19,7 +19,7 @@ a{text-decoration: none}
 
 </head>
 <body>
-<button name="delItem">삭제</button>
+
 <hr>
 		<article class="main">
 		<section>
@@ -46,26 +46,39 @@ a{text-decoration: none}
 			</table>
 		</section>
 		</article>
-		<script type="text/javascript">
-			
+		<script>
+			//////////////////////찜List출력//////////////////////////
+			let totalprice=0;
 			let getList =()=>{
-				let len = localStorage.length;     
+				document.getElementById("content").innerHTML="";
+				totalprice=0;
+				let len = localStorage.length;    
+				
 				for (let i = 0; i < len; i++) {
 					let key = localStorage.key(i); //1003
 					let value = localStorage.getItem(key); //빅벅,img/BigBuck.jpg,2500
 					let items = value.split(",");
-					console.log(items);
-					document.getElementById("content").innerHTML=`<tr><td><img src="${items[1]}"/></td>
-						<td>${key}</td><td>${items[0]}</td><td>${items[2]}</td>
-						
-						
-						</tr>`;
-						
+					
+					document.getElementById("content").innerHTML+=`<tr><td><img src="${items[1]}" class="poster"/></td>
+						<td id="key">${key}</td><td>${items[0]}</td><td name="price">${items[2]}</td>
+						<td><button name="delItem">삭제</button></td></tr>`;
+					totalprice+=parseInt(items[2]);
 					}
+					document.getElementById("price").innerText="주문가격 : "+totalprice;
 				}
-				
-				getList();
-		  
+			getList();
+			////////////////////////찜아이템삭제//////////////////////////////
+			let delButton = document.querySelectorAll("[name=delItem]");
+			delButton.forEach((item,idx)=>{
+				item.addEventListener("click",()=>{
+					
+					let key =event.target.closest('tr').querySelector('#key').innerText;
+					localStorage.removeItem(key);
+					getList();
+					location.reload();
+				})
+			});
+
 		  </script>
 </body>
 </html>

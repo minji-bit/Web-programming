@@ -96,6 +96,7 @@ table caption{
 		</div>
 	</footer>
 	<script>
+		/////////////////////////찜하기///////////////////////////////
 		let cartList = document.querySelectorAll("[name=cartinsert]");
 		cartList.forEach((item,idx)=>{
 			item.addEventListener("click",()=>{
@@ -103,8 +104,23 @@ table caption{
 				let value = item.getAttribute("data-info");
 				localStorage.setItem(key,value);
 			})
-		}); //찜하기
-		
+		}); 
+		///////비디오 재생///////////////////////////////
+		document.querySelectorAll("[name=vplay]").forEach((button)=>{
+			button.addEventListener("click",()=>{			
+				let video = document.getElementById("video");
+				let src = event.target.getAttribute("data-media-src");
+				video.innerHTML=`<source src=${src}>`;
+				video.load();
+				video.play();
+			})
+		})
+
+
+
+
+
+
 
 
 	</script>
