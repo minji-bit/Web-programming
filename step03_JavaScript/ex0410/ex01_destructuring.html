@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--배열이나 객체의 값을 쉽게 꺼내어 변수에 할당 할 수 있도록 하는 문법 -->
+    <h1>구조분해 할당 - destructuring</h1>
+    <script>
+    //1.객체
+     const emp = {empno:100, ename:"min", job:"student"};
+     {//emp에 있는 속성의 값을 변수에 담고싶다.
+     let empno = emp.empno;
+     let ename = emp.ename;
+     let job = emp.job;
+     console.log(empno , ename,job);
+     }
+     {
+        //새로운 문법 - 구조분해 할당
+     let {empno,ename,job} = emp;
+     console.log(empno , ename,job);
+     }
+     {
+     let {ename,empno} = emp; // 객체는 정의된 속성값으로 바인딩
+     console.log(empno , ename);
+     }
+     {
+     let {empno,ename,job="teacher",sal=100} = emp; //해당 객체에 해당 속성이 없는 경우에 = 으로 default값 설정 가능 
+     console.log(empno , ename,job,sal);
+     }
+     {
+     let {empno,ename:name} = emp; //해당 속성값을 다른 변수이름에 담고 싶을 때 : 로 할당
+     console.log(empno , name);
+     }
+//////////////////배열 구조분해 할당////////////////////
+     const jobs=["학생","강사"];
+    { let first = jobs[0];
+     let second = jobs[1];
+     console.log(first,second);
+    }
+    { let [first,second] = jobs; // 배열은 index순서대로
+     console.log(first,second);
+    }
+    const numbers=[10,20,30,40,50,60,70];
+    { let [a,b,,,c] = numbers; 
+     console.log(a,b,c);
+    }
+    { let [a,b,...c] = numbers; //rest연산자 -마지막에서만 사용 가능
+     console.log(a,b,c);
+    }
+    {
+      let a=5, b=10;
+      console.log(a,b);
+      //a와 b의 값을 교환하고 싶다.
+      [b,a] = [a,b];
+      console.log(a,b);
+    }
+    //단축 속성명
+    {
+        let name = "민지",age = 20;
+        let person={
+            // name:name,
+            // age:age
+            name,  // key 값과 value 명이 같으면 한번만 작성 가능 
+            age
+        }
+        console.log(person);
+    }
+
+     </script>
+</body>
+</html>

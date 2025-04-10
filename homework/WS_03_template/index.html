@@ -100,18 +100,25 @@
     let buttonList = document.querySelectorAll("[class=main-item-btn]");
     let parent;
     
-    buttonList[0].addEventListener("click",()=>{
-      parent= buttonList[0].parentNode;
-      alert(`id=${parent.getAttribute("data-main-item-id")}`);});
+    // buttonList[0].addEventListener("click",()=>{
+    //   parent= buttonList[0].parentNode;
+    //   alert(`id=${parent.getAttribute("data-main-item-id")}`);});
     
-      buttonList[1].addEventListener("click",()=>{
-      let parent= buttonList[1].parentNode;
-      alert(`id=${parent.getAttribute("data-main-item-id")}`);});
+    //   buttonList[1].addEventListener("click",()=>{
+    //   let parent= buttonList[1].parentNode;
+    //   alert(`id=${parent.getAttribute("data-main-item-id")}`);});
     
-      buttonList[2].addEventListener("click",()=>{
-      let parent= buttonList[2].parentNode;
-      alert(`id=${parent.getAttribute("data-main-item-id")}`);});
+    //   buttonList[2].addEventListener("click",()=>{
+    //   let parent= buttonList[2].parentNode;
+    //   alert(`id=${parent.getAttribute("data-main-item-id")}`);});
     
+      buttonList.forEach((item,idx)=>{
+         item.addEventListener("click",()=>{
+          alert(`id=${item.parentNode.getAttribute("data-main-item-id")}`);
+         }
+
+         );
+      });
 
   </script>
   

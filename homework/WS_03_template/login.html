@@ -100,11 +100,29 @@
   let id = document.getElementById("id");
   let password = document.getElementById("password");
   
-  document.querySelector("button").addEventListener("click",()=>{
-    if(!id.value) {alert("아이디를 입력해주세요."); return;}
-    if(!password.value) {alert("비밀번호를 입력해주세요."); return;}
+  document.querySelector("form").addEventListener("submit",()=>{
+    //전송기능 막고싶다!!
+    //event.preventDefault();
+    if(!id.value) {
+      alert("아이디를 입력해주세요."); 
+      id.focus();
+      event.preventDefault();
+      return;}
+    if(!password.value) {
+      alert("비밀번호를 입력해주세요."); 
+      password.focus();
+      event.preventDefault(); 
+      return;}
     alert("모든 정보가 있습니다.");
+
   })
+  
+
+  // document.querySelector("button").addEventListener("click",()=>{
+  //   if(!id.value) {alert("아이디를 입력해주세요."); return;}
+  //   if(!password.value) {alert("비밀번호를 입력해주세요."); return;}
+  //   alert("모든 정보가 있습니다.");
+  // })
   
 
  </script>
