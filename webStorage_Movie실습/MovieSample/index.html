@@ -109,9 +109,10 @@ table caption{
 		document.querySelectorAll("[name=vplay]").forEach((button)=>{
 			button.addEventListener("click",()=>{			
 				let video = document.getElementById("video");
-				let src = event.target.getAttribute("data-media-src");
-				video.innerHTML=`<source src=${src}>`;
-				video.load();
+				// let src = event.target.getAttribute("data-media-src");
+				// video.innerHTML=`<source src=${src}>`;
+				video.src=event.target.getAttribute("data-media-src");
+				//video.load();
 				video.play();
 			})
 		})

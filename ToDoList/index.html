@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+    <link rel="stylesheet" type="text/css" href="./css/app.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/Header.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/editor.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/list.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/todoitem.css"/>
+</head>
+<body>
+    <script>
+        let mockData = [ 
+      {id:0, isDone:false, content:"React study", date: new Date()}, 
+      {id:1, isDone:true, content:"친구만나기", date: new Date()}, 
+      {id:2, isDone:false, content:"낮잠자기", date: new Date()}, 
+      ];
+      let day =["일","월","화","수","목","금","토"];
+        onload=()=>{
+            initData(mockData);
+
+        }
+    const initData = (printData)=>{
+        let items = document.querySelector(".todos_wrapper").innerHTML;
+        items=``;
+        console.log(printData.length);
+        if(printData.length > items.length){
+            
+        }
+       
+       
+        for(let i=0;i<printData.length;i++){   
+            items += `<div class="TodoItem">
+                <input type="checkbox" onchange="onUpdate(this.id)" id="item.id">
+                <div class="content"></div>
+                <div class="date"></div>
+                <button class="button" onclick="todoDel(this)">삭제</button>
+            </div>`;
+        };
+
+        document.querySelectorAll(".TodoItem").forEach((item,idx) => {
+           if(mockData[idx].isDone)item.querySelector("input").checked=true;
+           item.querySelector(".content").innerText = mockData[idx].content;
+           let dateTime =mockData[idx].date;
+           item.querySelector(".date").innerText = dateTime.getFullYear()+"."+dateTime.getMonth()+"."+dateTime.getDay()+"."+(dateTime.getHours()<12?'오전':'오후')+" "+dateTime.getHours()+":"+dateTime.getMinutes()+":"+dateTime.getSeconds();
+        });
+    }
+
+
+    </script>
+    <div class="App">
+        <div class="Header">
+            <h3>오늘의 Plan😊</h3>
+            <h1 id="current_date">
+                <script>
+                   let date = new Date();
+                   let year = date.getFullYear();
+                   let month = date.getMonth() + 1;
+                   let days = date.getDate();
+                    document.getElementById("current_date").innerHTML = year + "-" + month + "-" + days+" "+day[date.getDay()]+"요일";
+                </script>
+            </h1>       
+        </div>
+        <form>
+            <div class="Editor">
+                <input id="inputContent">
+                <button>추가</button> 
+
+            </div>
+        </form>
+    
+
+    <div class="List">
+        <h4></h4>
+        <input>
+        <div class="todos_wrapper">
+            <div class="TodoItem">
+                <input type="checkbox" onchange="onUpdate(this.id)" id="0">
+                <div class="content"></div>
+                <div class="date"></div>
+                <button class="button" onclick="todoDel(this)">삭제</button>
+            </div>
+            <div class="TodoItem">
+                <input type="checkbox" onchange="onUpdate(this.id)" id="1">
+                <div class="content"></div>
+                <div class="date"></div>
+                <button class="button" onclick="todoDel(this)">삭제</button>
+            </div>
+            <div class="TodoItem">
+                <input type="checkbox" onchange="onUpdate(this.id)" id="2">
+                <div class="content"></div>
+                <div class="date"></div>
+                <button class="button" onclick="todoDel(this)">삭제</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let index=3;
+    document.querySelector(".Editor > button").onclick =() =>{ 
+        event.preventDefault(); //전송기능 막음 
+        let input = document.getElementById("inputContent").value;
+        let item = {id:index++,isDone:false,content:input,date:new Date()};//{id:0, isDone:false, content:"React study", date: new Date()}
+        mockData.push(item);
+       initData(mockData); //호출한다.(다시 화면 랜더링) 
+     }
+
+
+     const onUpdate = (targetId)=>{
+        //TodoItem에서 호출할 때 전달한 id 
+     /* mockData의 state의 값들 중에 targetId와 일치하는 todoitem의 isDone 변경 
+        map함수를 이용한다. map함수의 결과를 mockData에 저장한다. 
+     */ 
+    mockData.forEach((item)=>{
+        if(item.id===parseInt(targetId)){
+            item.isDone = !item.isDone;
+        }});
+       
+         initData(mockData); //호출한다.(다시 화면 랜더링)
+     }
+
+     const todoDel = (th)=>{ 
+     //filter()함수를 이용해서 삭제하려는 대상이외의 todo만 추출해서 mockData에 담든다.
+      
+      let id = th.parentNode.querySelector("input").getAttribute("id");
+      mockData = mockData.filter(item => item.id!=id);
+      
+     initData(mockData); //호출한다.(다시 화면 랜더링) 
+    }
+
+</script>
+</body>
+</html>
